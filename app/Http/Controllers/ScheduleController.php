@@ -10,7 +10,7 @@ use Storage;
 class ScheduleController extends Controller
 {
     //
-    public function index(Request $request)
+    public function index(Request $request)//
     {
          if($request->keyword){
              //search by title   
