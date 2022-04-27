@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Todo::class => TodoPolicy::class,
     ];
 
     /**
@@ -25,6 +26,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        /* define a admin user role */
+        Gate::define('isAdmin', function($user){
+            return $user->role == 'admin';
+        });
+
+        /* define a manager user role */
+        Gate::define('isManager', function($user){
+            return $user->role == 'manager';
+        });
+
+        /* define a user role */
+        Gate::define('isUser', function($user){
+            return $user->role == 'user';
+        });
     }
 }

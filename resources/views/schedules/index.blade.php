@@ -26,6 +26,7 @@
                             </div>
                         </form>  
                     </div>
+                    
                     <div class="float-end"> 
                         <a href="{{ route('schedule:create') }}" class="btn btn-primary">+ Create New Schedule</a>
                     </div>

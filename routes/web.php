@@ -21,6 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('admin');
 Route::get('/schedules', [App\Http\Controllers\ScheduleController::class, 'index'])->name('schedule:index')->middleware('auth');
 
 Route::get('/schedules/create', [App\Http\Controllers\ScheduleController::class, 'create'])->name('schedule:create');

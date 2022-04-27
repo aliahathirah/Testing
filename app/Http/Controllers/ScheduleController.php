@@ -10,7 +10,7 @@ use Storage;
 class ScheduleController extends Controller
 {
     //
-    public function index(Request $request)//
+    public function index(Request $request)
     {
          if($request->keyword){
              //search by title   
@@ -32,7 +32,7 @@ class ScheduleController extends Controller
         return view('schedules.index', compact('schedules'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         // this is schedule create form
         // show create form
@@ -43,6 +43,10 @@ class ScheduleController extends Controller
     public function store(Request $request)
     {
         // store all input to table 'schedules' using model Schedule
+        $validated = $request->validate([
+            'title' => 'required',
+            'description' => 'required|max:20'
+            ]); 
 
         $schedule = new Schedule();
         $schedule->title = $request->title;
